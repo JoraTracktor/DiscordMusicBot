@@ -30,7 +30,7 @@ public class CommandManager {
         commands.put(PLAY, new PlayCommand());
         commands.put(NEXT, new NextTrackCommand());
         commands.put(PAUSE, new PauseCommand());
-        commands.put(ClEAR, new ClearCommand());
+        commands.put(CLEAR, new ClearCommand());
         commands.put(INFO, new InfoTrackCommand());
         commands.put(PLAYLIST, new InfoPlaylistCommand());
 
@@ -60,6 +60,7 @@ public class CommandManager {
             args = split[1];
         }
         Context context = new Context(args, event);
+        //System.out.println(commandName);
         executeCommand(commandName, context);
     }
 

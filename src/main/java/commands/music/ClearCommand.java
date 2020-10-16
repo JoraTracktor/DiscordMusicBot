@@ -16,7 +16,7 @@ public class ClearCommand implements ICommand {
 
     @Override
     public String getName() {
-        return CommandName.ClEAR.toString();
+        return CommandName.CLEAR.toString();
     }
 
     @Override

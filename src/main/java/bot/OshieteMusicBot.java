@@ -36,7 +36,7 @@ public class OshieteMusicBot extends ListenerAdapter{
         List<TextChannel> channels = event.getGuild().getTextChannels();
         channels.forEach(channel -> channel.sendMessageFormat("Hi all! **%s**", event.getGuild().getName()).queue());
         CommandManager commandManager = CommandManager.getInstance();
-        //commandManager.executeCommand(CommandName.HELP, null, null);
+        commandManager.executeCommand(CommandName.HELP, null);
     }
 }
 

@@ -45,6 +45,6 @@ public class Connection {
         }
 
         audioManager.closeAudioConnection();
-        channel.sendMessage("Disconnected from " + channel.getName()).queue();
+        channel.sendMessage("Disconnected from " + event.getMember().getVoiceState().getChannel().getName()).queue();
     }
 }

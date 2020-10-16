@@ -6,7 +6,7 @@ public enum CommandName {
     PLAY,
     NEXT,
     PAUSE,
-    ClEAR,
+    CLEAR,
     PLAYLIST,
     INFO,
 
