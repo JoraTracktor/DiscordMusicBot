@@ -11,7 +11,14 @@ public enum CommandName {
     INFO,
 
     HELP,
-    UNKNOWN;
+    UNKNOWN,
+    PING,
+
+    WEATHER,
+
+    MCLEAR,
+    MPRINT,
+    MATH;
 
     @Override
     public String toString() {

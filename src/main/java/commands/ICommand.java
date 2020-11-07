@@ -4,11 +4,13 @@ import bot.Context;
 
 public interface ICommand {
 
-    boolean execute(Context context);
+    void execute(Context context);
 
     String getName();
 
     String getUsage();
+
+    String getArgs();
 
     String getHelp();
 }

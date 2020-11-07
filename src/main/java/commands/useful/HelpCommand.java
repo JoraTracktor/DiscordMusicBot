@@ -7,10 +7,9 @@ import enums.CommandName;
 
 public class HelpCommand implements ICommand {
     @Override
-    public boolean execute(Context context) {
+    public void execute(Context context) {
         String message = CommandManager.getInstance().printHelp();
         context.getEvent().getChannel().sendMessage(message).queue();
-        return true;
     }
 
     @Override
@@ -20,7 +19,12 @@ public class HelpCommand implements ICommand {
 
     @Override
     public String getUsage() {
-        return "[-]";
+        return "-help";
+    }
+
+    @Override
+    public String getArgs() {
+        return "[no args]";
     }
 
     @Override

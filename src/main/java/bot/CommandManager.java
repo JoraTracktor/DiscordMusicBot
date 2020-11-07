@@ -1,9 +1,13 @@
 package bot;
 
 import commands.ICommand;
+import commands.maths.CalculateCommand;
+import commands.maths.ClearVarCommand;
+import commands.maths.PrintVarCommand;
 import commands.music.*;
-import commands.useful.HelpCommand;
+import commands.useful.*;
 import enums.CommandName;
+import math.Math;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import java.util.HashMap;
@@ -25,6 +29,7 @@ public class CommandManager {
 
     private CommandManager() {
         Connection connection = new Connection();
+        Math math = new Math();
         commands.put(JOIN, new JoinCommand(connection));
         commands.put(LEAVE, new LeaveCommand(connection));
         commands.put(PLAY, new PlayCommand());
@@ -34,10 +39,18 @@ public class CommandManager {
         commands.put(INFO, new InfoTrackCommand());
         commands.put(PLAYLIST, new InfoPlaylistCommand());
 
+        commands.put(WEATHER, new WeatherCommand());
         commands.put(HELP, new HelpCommand());
+        commands.put(UNKNOWN, new UnknownCommand());
+        commands.put(PING, new PingCommand());
 
-        help = String.format("%-10s %-20s %s\n", "Name","Args", "Info");
-        commands.forEach((k,v) -> help += String.format("%-10s %-20s %s\n", v.getName(), v.getUsage(), v.getHelp()));
+        commands.put(MATH, new CalculateCommand(math));
+        commands.put(MCLEAR, new ClearVarCommand(math));
+        commands.put(MPRINT, new PrintVarCommand(math));
+
+//        help = String.format("%-10s %-10s %-20s %s\n", "Name","Args", "Use", "Info");
+//        commands.forEach((k,v) -> help += String.format("%-10s %-10s %-20s %s\n", v.getName(), v.getArgs(), v.getUsage(), v.getHelp()));
+        help = "List of commands:\n" + "https://raw.githubusercontent.com/JoraTracktor/DiscordMusicBot/master/README.md";
     }
 
 
@@ -71,7 +84,7 @@ public class CommandManager {
     public String printHelp() {
         String message = "List of commands:\n";
         message += help;
-        System.out.println(message);
+        //System.out.println(message);
         return message;
     }
 }

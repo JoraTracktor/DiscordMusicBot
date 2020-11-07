@@ -15,10 +15,9 @@ public class LeaveCommand implements ICommand {
         this.connection = connection;
     }
     @Override
-    public boolean execute(Context context) {
+    public void execute(Context context) {
         playerManager.clearQueue(context.getEvent().getChannel());
         connection.disconnectFromChannel(context.getEvent());
-        return true;
     }
 
     @Override
@@ -28,7 +27,12 @@ public class LeaveCommand implements ICommand {
 
     @Override
     public String getUsage() {
-        return "[-]";
+        return "-leave";
+    }
+
+    @Override
+    public String getArgs() {
+        return "[no args]";
     }
 
     @Override

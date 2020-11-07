@@ -9,9 +9,8 @@ public class ClearCommand implements ICommand {
 
     private PlayerManager playerManager = PlayerManager.getInstance();
     @Override
-    public boolean execute(Context context) {
+    public void execute(Context context) {
         playerManager.clearQueue(context.getEvent().getChannel());
-        return true;
     }
 
     @Override
@@ -21,11 +20,16 @@ public class ClearCommand implements ICommand {
 
     @Override
     public String getUsage() {
-        return "[-]";
+        return "-stop";
+    }
+
+    @Override
+    public String getArgs() {
+        return "[no args]";
     }
 
     @Override
     public String getHelp() {
-        return "Stop play current track and clear queue";
+        return "Stop playing current track and clear queue";
     }
 }

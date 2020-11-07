@@ -9,9 +9,8 @@ public class NextTrackCommand implements ICommand {
 
     private PlayerManager playerManager = PlayerManager.getInstance();
     @Override
-    public boolean execute(Context context) {
+    public void execute(Context context) {
         playerManager.playNext(context.getEvent().getChannel());
-        return true;
     }
 
     @Override
@@ -21,7 +20,12 @@ public class NextTrackCommand implements ICommand {
 
     @Override
     public String getUsage() {
-        return "[-]";
+        return "-next";
+    }
+
+    @Override
+    public String getArgs() {
+        return "[no args]";
     }
 
     @Override

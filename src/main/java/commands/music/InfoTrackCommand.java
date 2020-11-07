@@ -9,9 +9,8 @@ public class InfoTrackCommand implements ICommand {
 
     private PlayerManager playerManager = PlayerManager.getInstance();
     @Override
-    public boolean execute(Context context) {
+    public void execute(Context context) {
         playerManager.printTrackInfo(context.getEvent().getChannel());
-        return true;
     }
 
     @Override
@@ -21,7 +20,12 @@ public class InfoTrackCommand implements ICommand {
 
     @Override
     public String getUsage() {
-        return "[-]";
+        return "-info";
+    }
+
+    @Override
+    public String getArgs() {
+        return "[no args]";
     }
 
     @Override

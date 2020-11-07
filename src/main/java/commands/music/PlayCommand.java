@@ -11,7 +11,7 @@ public class PlayCommand implements ICommand {
     private PlayerManager playerManager = PlayerManager.getInstance();
 
     @Override
-    public boolean execute(Context context) {
+    public void execute(Context context) {
 
         CommandManager.getInstance().executeCommand(CommandName.JOIN, context);
 
@@ -20,7 +20,6 @@ public class PlayCommand implements ICommand {
         } else {
             playerManager.addAndPlay(context.getEvent().getChannel(), context.getArgs());
         }
-        return true;
     }
 
     @Override
@@ -30,6 +29,11 @@ public class PlayCommand implements ICommand {
 
     @Override
     public String getUsage() {
+        return "-play\n-play https://www.youtube.com/watch?v=5yx6BWlEVcY&ab_channel=ChillhopMusic\n-play eminem rap god";
+    }
+
+    @Override
+    public String getArgs() {
         return "[-|link|query]";
     }
 

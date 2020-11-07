@@ -2,29 +2,35 @@ package commands.useful;
 
 import bot.Context;
 import commands.ICommand;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-
-import java.awt.*;
-import java.util.List;
+import enums.CommandName;
+import parser.WeatherParser;
 
 public class WeatherCommand implements ICommand {
+
+    private WeatherParser weatherParser = new WeatherParser();
+
     @Override
-    public boolean execute(Context context) {
-        return false;
+    public void execute(Context context) {
+        context.getEvent().getChannel().sendMessage(weatherParser.getWeatherData(context.getArgs())).queue();
     }
 
     @Override
     public String getName() {
-        return null;
+        return CommandName.WEATHER.toString();
     }
 
     @Override
     public String getUsage() {
-        return null;
+        return "-weather moscow";
+    }
+
+    @Override
+    public String getArgs() {
+        return "[city]";
     }
 
     @Override
     public String getHelp() {
-        return "print weather info in the city";
+        return "Prints weather info in the city";
     }
 }

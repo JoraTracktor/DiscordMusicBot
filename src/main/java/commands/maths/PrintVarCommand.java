@@ -1,30 +1,31 @@
-package commands.music;
+package commands.maths;
 
-import bot.Connection;
 import bot.Context;
 import commands.ICommand;
 import enums.CommandName;
+import math.Math;
 
-public class JoinCommand implements ICommand {
+public class PrintVarCommand implements ICommand {
 
-    private Connection connection;
-    public JoinCommand(Connection connection){
-        this.connection = connection;
+    private Math math;
+
+    public PrintVarCommand(Math math){
+        this.math = math;
     }
 
     @Override
     public void execute(Context context) {
-        connection.connectToChannel(context.getEvent());
+        context.getEvent().getChannel().sendMessage(math.printVars()).queue();
     }
 
     @Override
     public String getName() {
-        return CommandName.JOIN.toString();
+        return CommandName.MPRINT.toString();
     }
 
     @Override
     public String getUsage() {
-        return "-join";
+        return "-mprint";
     }
 
     @Override
@@ -34,6 +35,6 @@ public class JoinCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Join bot to a channel";
+        return "Prints all saved variables";
     }
 }

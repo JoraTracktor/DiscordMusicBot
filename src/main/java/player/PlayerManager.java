@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class PlayerManager {
     private static PlayerManager INSTANCE;
-    private final AudioPlayerManager playerManager;
+    private final AudioPlayerManager audioPlayerManager;
     private final Map<Long, GuildMusicManager> musicManagers;
 
     public static synchronized PlayerManager getInstance() {
@@ -32,9 +32,9 @@ public class PlayerManager {
 
     private PlayerManager() {
         this.musicManagers = new HashMap<>();
-        this.playerManager = new DefaultAudioPlayerManager();
-        AudioSourceManagers.registerRemoteSources(playerManager);
-        AudioSourceManagers.registerLocalSource(playerManager);
+        this.audioPlayerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(audioPlayerManager);
+        AudioSourceManagers.registerLocalSource(audioPlayerManager);
     }
 
     public synchronized GuildMusicManager getGuildMusicManager(TextChannel channel) {
@@ -43,7 +43,7 @@ public class PlayerManager {
         GuildMusicManager musicManager = musicManagers.get(guildId);
 
         if (musicManager == null) {
-            musicManager = new GuildMusicManager(playerManager, channel);
+            musicManager = new GuildMusicManager(audioPlayerManager, channel);
             musicManagers.put(guildId, musicManager);
         }
         guild.getAudioManager().setSendingHandler(musicManager.getSendHandler());
@@ -57,7 +57,7 @@ public class PlayerManager {
             trackUrl = "ytsearch:" + trackUrl;
         }
         System.out.println(trackUrl);
-        playerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
+        audioPlayerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
 
             @Override
             public void trackLoaded(AudioTrack track) {

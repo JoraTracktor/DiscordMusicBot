@@ -10,9 +10,8 @@ public class PauseCommand implements ICommand {
     private PlayerManager playerManager = PlayerManager.getInstance();
 
     @Override
-    public boolean execute(Context context) {
+    public void execute(Context context) {
         playerManager.setPaused(context.getEvent().getChannel(),true);
-        return true;
     }
 
     @Override
@@ -22,7 +21,12 @@ public class PauseCommand implements ICommand {
 
     @Override
     public String getUsage() {
-        return "[-]";
+        return "-pause";
+    }
+
+    @Override
+    public String getArgs() {
+        return "[no args]";
     }
 
     @Override

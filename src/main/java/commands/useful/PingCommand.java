@@ -1,25 +1,26 @@
 package commands.useful;
 
-import bot.CommandManager;
 import bot.Context;
 import commands.ICommand;
 import enums.CommandName;
 
-public class UnknownCommand implements ICommand {
+public class PingCommand implements ICommand {
     @Override
     public void execute(Context context) {
-        context.getEvent().getChannel().sendMessage(getHelp()).queue();
-        CommandManager.getInstance().executeCommand(CommandName.HELP, context);
+        long time = System.currentTimeMillis();
+        context.getEvent().getChannel().sendMessage("Ping: ").queue(response -> {
+                    response.editMessageFormat("Ping: %d ms", System.currentTimeMillis() - time).queue();
+        });
     }
 
     @Override
     public String getName() {
-        return CommandName.UNKNOWN.toString();
+        return CommandName.PING.toString();
     }
 
     @Override
     public String getUsage() {
-        return "Did not use";
+        return "-ping";
     }
 
     @Override
@@ -29,6 +30,6 @@ public class UnknownCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "no such command exists";
+        return "Prints ping";
     }
 }
