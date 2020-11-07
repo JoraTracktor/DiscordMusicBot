@@ -29,3 +29,5 @@ Another commands:
 -ping       [-]                -ping                              Prints ping
 
 
+Math functions:
+sin, cos ,tan ,abs, exp, log, log10, round, sqrt, cbrt
