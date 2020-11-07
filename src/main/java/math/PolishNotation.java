@@ -5,7 +5,6 @@ import enums.LexemType;
 import java.util.*;
 
 public class PolishNotation {
-
     private HashMap<String, String> variables  = new HashMap<>();
     private Deque<Token> polish = new ArrayDeque<>();
     private Deque<Token> polishStack = new ArrayDeque<>();
@@ -144,16 +143,16 @@ public class PolishNotation {
                 double op = resultStack.pop();
 
                 switch (token.value){
-                    case "sin": resultStack.push(java.lang.Math.sin(op)); break;
-                    case "cos": resultStack.push(java.lang.Math.cos(op)); break;
-                    case "tan": resultStack.push(java.lang.Math.tan(op)); break;
-                    case "abs": resultStack.push(java.lang.Math.abs(op)); break;
-                    case "exp": resultStack.push(java.lang.Math.exp(op)); break;
-                    case "log": resultStack.push(java.lang.Math.log(op)); break;
-                    case "log10": resultStack.push(java.lang.Math.log10(op)); break;
-                    case "round": resultStack.push((double) java.lang.Math.round(op)); break;
-                    case "sqrt": resultStack.push(java.lang.Math.sqrt(op)); break;
-                    case "cbrt": resultStack.push(java.lang.Math.cbrt(op)); break;
+                        case "sin": resultStack.push(java.lang.Math.sin(op)); break;
+                        case "cos": resultStack.push(java.lang.Math.cos(op)); break;
+                        case "tan": resultStack.push(java.lang.Math.tan(op)); break;
+                        case "abs": resultStack.push(java.lang.Math.abs(op)); break;
+                        case "exp": resultStack.push(java.lang.Math.exp(op)); break;
+                        case "log": resultStack.push(java.lang.Math.log(op)); break;
+                        case "log10": resultStack.push(java.lang.Math.log10(op)); break;
+                        case "round": resultStack.push((double) java.lang.Math.round(op)); break;
+                        case "sqrt": resultStack.push(java.lang.Math.sqrt(op)); break;
+                        case "cbrt": resultStack.push(java.lang.Math.cbrt(op)); break;
                 }
             } else if (token.type == LexemType.BINARY_OP){
 
@@ -178,7 +177,7 @@ public class PolishNotation {
                 return result;
             }
         }
-        result = resultStack.size() == 0 ? error :  String.valueOf((int) java.lang.Math.round(resultStack.pop()));
+        result = resultStack.size() == 0 ? error :  String.valueOf(resultStack.pop());
         return result;
     }
 }

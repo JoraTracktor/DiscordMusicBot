@@ -15,7 +15,7 @@ public class ClearVarCommand implements ICommand {
 
     @Override
     public void execute(Context context) {
-        math.clearVars();
+        math.clearVars(context);
         context.getEvent().getChannel().sendMessage("Variables are deleted!").queue();
     }
 

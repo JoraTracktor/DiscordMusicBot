@@ -50,7 +50,7 @@ public class CommandManager {
 
 //        help = String.format("%-10s %-10s %-20s %s\n", "Name","Args", "Use", "Info");
 //        commands.forEach((k,v) -> help += String.format("%-10s %-10s %-20s %s\n", v.getName(), v.getArgs(), v.getUsage(), v.getHelp()));
-        help = "List of commands:\n" + "https://raw.githubusercontent.com/JoraTracktor/DiscordMusicBot/master/README.md";
+        help = "https://raw.githubusercontent.com/JoraTracktor/DiscordMusicBot/master/README.md";
     }
 
 

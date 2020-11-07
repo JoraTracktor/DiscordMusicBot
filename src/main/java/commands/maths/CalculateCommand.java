@@ -15,7 +15,7 @@ public class CalculateCommand implements ICommand {
     @Override
     public void execute(Context context) {
 
-        context.getEvent().getChannel().sendMessage(math.calculate(context.getArgs())).queue();
+        context.getEvent().getChannel().sendMessage(math.calculate(context)).queue();
     }
 
     @Override

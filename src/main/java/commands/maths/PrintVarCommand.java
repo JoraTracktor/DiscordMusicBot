@@ -15,7 +15,7 @@ public class PrintVarCommand implements ICommand {
 
     @Override
     public void execute(Context context) {
-        context.getEvent().getChannel().sendMessage(math.printVars()).queue();
+        context.getEvent().getChannel().sendMessage(math.printVars(context)).queue();
     }
 
     @Override
